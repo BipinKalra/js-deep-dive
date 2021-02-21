@@ -49,3 +49,22 @@ console.log(bipin);
 // This is because primitives are passed to functions as copies
 // flightNum = flight
 // On the other hand, objects are passed by references
+
+const oneWord = function (str) {
+  return str.replace(/ /g, "").toLowerCase();
+};
+
+const upperFirstWord = function (str) {
+  const [first, ...others] = str.split(" ");
+  return [first.toUpperCase(), ...others].join(" ");
+};
+
+// Higher Order Function
+const transformer = function (str, fn) {
+  console.log(`Original String - ${str}`);
+  console.log(`Transformed String - ${fn(str)}`);
+  console.log(`Transformed by - ${fn.name}`); // Name method for functions
+};
+
+transformer("Javascript is a fun language!", upperFirstWord);
+transformer("Javascript is a fun language!", oneWord);
