@@ -135,3 +135,25 @@ poll.displayResults.call({ answers: [5, 6, 7, 8] }, "string");
 (function () {
   console.log("This is an IIFE!");
 })();
+
+(() => console.log("IIFE for an arrow function"))();
+
+// Closures
+
+const secureBooking = function () {
+  let passengerCount = 0;
+
+  return function () {
+    passengerCount++;
+    console.log(`${passengerCount} passengers.`);
+  };
+};
+
+const booker = secureBooking();
+
+booker();
+booker();
+booker();
+
+// Closure can be seen here but being an internal property, it cant be explicitly used
+console.dir(booker);
