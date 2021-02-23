@@ -109,11 +109,20 @@ const poll = {
 };
 
 poll.resgisterNewAnswer = function () {
-  const choice = prompt(`${this.question}\n${this.options.join("\n")}`);
-  if (typeof choice === "Number" && choice < 4 && choice >= 0)
-    poll.answers[choice]++;
+  const choice = Number(prompt(`${this.question}\n${this.options.join("\n")}`));
+  if (choice < 4 && choice >= 0) poll.answers[choice]++;
+
+  this.displayResults();
 };
 
 document
   .querySelector(".poll")
   .addEventListener("click", poll.resgisterNewAnswer.bind(poll));
+
+poll.displayResults = function (type = "array") {
+  if (type == "array") {
+    console.log(this.answers);
+  } else if (type == "string") {
+    console.log(`Poll results are ${this.answers.join(", ")}`);
+  }
+};
