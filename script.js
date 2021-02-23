@@ -157,3 +157,25 @@ booker();
 
 // Closure can be seen here but being an internal property, it cant be explicitly used
 console.dir(booker);
+
+let f;
+const g = function () {
+  const a = 23;
+  f = function () {
+    console.log(a * 2);
+  };
+};
+
+const h = function () {
+  const b = 77;
+  f = function () {
+    console.log(b * 2);
+  };
+};
+
+g();
+f(); // f() closes over the variable environment of g() function as it is defined within the scope of the g() function
+
+// Reassigning f()
+h();
+f(); // Closure changes on reassiging the function
