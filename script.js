@@ -68,3 +68,38 @@ const transformer = function (str, fn) {
 
 transformer("Javascript is a fun language!", upperFirstWord);
 transformer("Javascript is a fun language!", oneWord);
+
+// Function returning functions
+const greet = function (greeting) {
+  return function (name) {
+    console.log(`${greeting} ${name}`);
+  };
+};
+
+// Using arrow functions
+const greetArr = (greeting) => (name) => console.log(`${greeting} ${name}`);
+
+// greet("Hey") returns a function which is then stored in the greeterHey variable
+const greeterHey = greet("Hey");
+greeterHey("Bipin");
+// THIS WORKS BECAUSE OF CLOSURES
+// Can also be done by clubbing the two calls
+greet("Hello")("Bipin");
+
+// Partial Application (Bind function)
+const addTax = (rate, value) => value + value * rate;
+console.log(addTax(0.1, 200));
+
+const addGST = addTax.bind(null, 0.18); // this keyword has been set to null
+console.log(addGST(120));
+
+function specificTaxRate(rate) {
+  return function (value) {
+    return value + value * rate;
+  };
+}
+
+const addGST2 = specificTaxRate(0.28);
+console.log(addGST2(200));
+
+
