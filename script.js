@@ -179,3 +179,12 @@ f(); // f() closes over the variable environment of g() function as it is define
 // Reassigning f()
 h();
 f(); // Closure changes on reassiging the function
+
+(function () {
+  const header = document.querySelector("h1");
+  header.style.color = "red";
+
+  document.querySelector("body").addEventListener("click", function () {
+    header.style.color = "blue";
+  });
+})();
