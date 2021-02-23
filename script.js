@@ -126,3 +126,12 @@ poll.displayResults = function (type = "array") {
     console.log(`Poll results are ${this.answers.join(", ")}`);
   }
 };
+
+// Binding the function to another this keyword by passing a different object using call function
+poll.displayResults.call({ answers: [5, 6, 7, 8] }, "string");
+
+// IIFEs
+
+(function () {
+  console.log("This is an IIFE!");
+})();
