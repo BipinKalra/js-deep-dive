@@ -102,4 +102,18 @@
 // const addGST2 = specificTaxRate(0.28);
 // console.log(addGST2(200));
 
+const poll = {
+  question: "What is your favourite programming language?",
+  options: ["0: JavaScript", "1: C++", "2: Python", "3: GoLang"],
+  answers: new Array(4).fill(0),
+};
 
+poll.resgisterNewAnswer = function () {
+  const choice = prompt(`${this.question}\n${this.options.join("\n")}`);
+  if (typeof choice === "Number" && choice < 4 && choice >= 0)
+    poll.answers[choice]++;
+};
+
+document
+  .querySelector(".poll")
+  .addEventListener("click", poll.resgisterNewAnswer.bind(poll));
